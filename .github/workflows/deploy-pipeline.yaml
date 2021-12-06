@@ -47,10 +47,12 @@ jobs:
           
   publish:
    runs-on: ubuntu-latest
-   uses: actions/create-release@v1
-   env:
+   steps:
+    - name: create release
+    uses: actions/create-release@v1
+    env:
      GITHUB_TOKEN: ${{ secrets.github_token }}
-   with:
+    with:
      tag_name: Release from ${{ github.run_number }}
      body: New release for ${{ github.sha }}. Release notes on documentation site
      draft: false
